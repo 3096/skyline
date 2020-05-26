@@ -1,5 +1,5 @@
 # Skyline
-An enviroment for linking, runtime hooking and code patching in Super Smash Bros Ultimate
+An enviroment for linking, runtime hooking and code patching in ~~Super Smash Bros Ultimate~~
 
 # Contributors
 This project is derived from OdysseyReversed and Starlight
