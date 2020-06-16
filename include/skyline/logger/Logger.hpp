@@ -13,6 +13,7 @@ extern Logger* s_Instance;
 
 class Logger {
    public:
+    virtual ~Logger() {}
     virtual void Initialize() = 0;
     virtual void SendRaw(void*, size_t) = 0;
     virtual std::string FriendlyName() = 0;

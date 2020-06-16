@@ -1,5 +1,6 @@
 # Skyline
-An enviroment for linking, runtime hooking and code patching in ~~Super Smash Bros Ultimate~~
+An environment for linking, runtime hooking and code patching in Switch games.
+This fork is a temporary template as an interim until Skyline base and its plugin loading is more mature.
 
 # Contributors
 This project is derived from OdysseyReversed and Starlight
@@ -10,7 +11,7 @@ This project is derived from OdysseyReversed and Starlight
 - [shadowninja108](https://github.com/shadowninja108)
 - [shibbo](https://github.com/shibbo) - Repo derived from their work on OdysseyReversed
 - [Thog](https://github.com/Thog) - Expertise in how rtld is implemented
-- [jakibaki ](https://github.com/jakibaki) - Advice with numerous things, including runtime hooking
+- [jakibaki](https://github.com/jakibaki) - Advice with numerous things, including runtime hooking
 
 # Credits
 - devkitA64

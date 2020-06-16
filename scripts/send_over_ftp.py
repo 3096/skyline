@@ -40,6 +40,10 @@ if __name__ == "__main__":
               "ERROR: Please specify with `IP=[Your console's IP]`")
         sys.exit(-1)
 
+    program_id = sys.argv[2]
+    code_name = sys.argv[3]
+    subsdk_name = sys.argv[4]
+
     curDir = os.curdir
 
     ftp = FTP()
@@ -48,17 +52,17 @@ if __name__ == "__main__":
     print('Connected!')
 
     ensuredirectory(ftp, '/atmosphere', 'contents')
-    ensuredirectory(ftp, '/atmosphere/contents', "01006A800016E000")
-    ensuredirectory(ftp, f'/atmosphere/contents/01006A800016E000', 'exefs')
+    ensuredirectory(ftp, '/atmosphere/contents', program_id)
+    ensuredirectory(ftp, f'/atmosphere/contents/{program_id}', 'exefs')
 
     binaryPath = f'{os.path.basename(os.getcwd())}.nso'
     print(binaryPath)
     if os.path.isfile(binaryPath):
-        sdPath = f'/atmosphere/contents/01006A800016E000/exefs/subsdk1'
+        sdPath = f'/atmosphere/contents/{program_id}/exefs/{subsdk_name}'
         print(f'Sending {sdPath}')
         ftp.storbinary(f'STOR {sdPath}', open(binaryPath, 'rb'))
 
-        # metaPath = f'bfsw.npdm'
-        # sdPath = '/atmosphere/contents/01006A800016E000/exefs/main.npdm'
-        # print(f'Sending {sdPath}')
-        # ftp.storbinary('STOR /atmosphere/contents/01006A800016E000/exefs/main.npdm', open(metaPath, 'rb'))
+        metaPath = f'{code_name}.npdm'
+        sdPath = f'/atmosphere/contents/{program_id}/exefs/main.npdm'
+        print(f'Sending {sdPath}')
+        ftp.storbinary(f'STOR {sdPath}', open(metaPath, 'rb'))
