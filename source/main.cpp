@@ -57,7 +57,7 @@ void skyline_main() {
     A64HookInit();
 
     // hook something that prevents malloc apparently
-    auto funcIsMallocDisabled = (void*)(skyline::utils::g_MainTextAddr + 0x65DAF0);
+    auto funcIsMallocDisabled = (void*)(skyline::utils::g_MainTextAddr + 0x65DB60);
     A64HookFunction(funcIsMallocDisabled, (void*)returnFalse, nullptr);
 
     // initialize logger
