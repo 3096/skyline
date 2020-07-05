@@ -34,6 +34,7 @@ static skyline::utils::Task* after_romfs_task = new skyline::utils::Task{[]() {
 }};
 
 void stub() {}
+auto returnFalse() { return false; }
 
 Result (*nnFsMountRomImpl)(char const*, void*, unsigned long);
 
@@ -54,6 +55,10 @@ void skyline_main() {
 
     // init hooking setup
     A64HookInit();
+
+    // hook something that prevents malloc apparently
+    auto funcIsMallocDisabled = (void*)(skyline::utils::g_MainTextAddr + 0x65DAF0);
+    A64HookFunction(funcIsMallocDisabled, (void*)returnFalse, nullptr);
 
     // initialize logger
     skyline::logger::s_Instance = new skyline::logger::TcpLogger();

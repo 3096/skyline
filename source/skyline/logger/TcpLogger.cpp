@@ -20,8 +20,12 @@ void TcpLogger::Initialize() {
 
     Result (*nnSocketInitalizeImpl)(void*, ulong, ulong, int);
 
-    A64HookFunction(reinterpret_cast<void*>(nn::socket::Initialize), reinterpret_cast<void*>(stub),
+    Result (*socketInitWithPool)(void*, ulong, ulong, int) = nn::socket::Initialize;
+    A64HookFunction(reinterpret_cast<void*>(socketInitWithPool), reinterpret_cast<void*>(stub),
                     (void**)&nnSocketInitalizeImpl);  // prevent trying to init sockets twice (crash)
+
+    Result (*socketInitWithConfig)(nn::socket::Config const&) = nn::socket::Initialize;
+    A64HookFunction(reinterpret_cast<void*>(socketInitWithConfig), reinterpret_cast<void*>(stub), nullptr);
 
     A64HookFunction(reinterpret_cast<void*>(nn::socket::Finalize), reinterpret_cast<void*>(stub),
                     NULL);  // prevent it being deinit either
