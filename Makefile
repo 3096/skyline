@@ -11,9 +11,9 @@ endif
 
 NAME 			:= $(shell basename $(CURDIR))
 NAME_LOWER		:= $(shell echo $(NAME) | tr A-Z a-z)
-TID				:= tid-goes-here
-CODE_NAME		:= example
-SUBSDK_NAME		:= subsdk1
+TID				:= 01003BC0000A0000
+CODE_NAME		:= blitz
+SUBSDK_NAME		:= subsdk0
 
 SCRIPTS_DIR		:= scripts
 BUILD_DIR 		:= build
